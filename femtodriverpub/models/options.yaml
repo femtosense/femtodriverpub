@@ -1,0 +1,14 @@
+identity_fqir : 
+  type : FQIR
+  description : "debug network, identity matrix"
+  compiler_kwargs : 
+    placement_algo : "topo_sort"
+
+# can supply femtomapper compiler_kwargs as an attribute. E.g.
+# modelname :
+#   type : ...
+#   description : ...
+#   compiler_kwargs :
+#     argname : argval
+#     ...
+

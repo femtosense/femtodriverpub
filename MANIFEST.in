@@ -1,0 +1,6 @@
+include NAME
+include LICENSE
+include *.yml
+include */VERSION
+include */ENV_REQUIREMENTS.sh
+include */PY_REQUIREMENTS
