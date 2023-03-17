@@ -426,7 +426,7 @@ class SPURunner(FemtoRunner):
             raise NotImplementedError()
             # I think this is just if you want to reset certain variables?
 
-        self.io.start_apb_recording('PROG')
+        self.io.start_apb_recording('0PROG')
 
         # maybe do some platform-specific reset stuff before programming
         self.io.reset()

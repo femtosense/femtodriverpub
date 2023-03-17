@@ -19,13 +19,13 @@ you may remove or comment out the femtocrux requirement in `femtodriverpub/PY_RE
 
 first unpack the memory image .zip emitted by femtocrux.
 
-in `femtodriver-pub/run`:
+in `femtodriverpub/run/`:
 
 ```
 python sd_from_femtocrux.py <path-to-unzipped-femtocrux-output-directory>
 ```
 
-this will populate `apb_records`, which has the `PROG_A` and `PROG_D` files which can be downloaded directly to the SD card.
+this will populate `apb_records`, which has the `0PROG_A` and `0PROG_D` files which can be downloaded to the SD card. Note that future firmware might allow multiple models to coexist on the SD card. The leading '0' indicates that this is the first model.
 
 #### To generate SD programming files from a previously saved FQIR pickle
 
@@ -43,11 +43,14 @@ run_from_pt.py ../models/fqir_identity.py --norun
 
 Notice the `images.zip` that appears and was unpacked to `docker_data/`. `apb_records` contains the output as before.
 
+Pickles are notoriously unportable. Make sure the pickle is generated using the tool versions as on the machine it is unpacked.
+
 ## Future
 
 Updates are planned that will:
 - allow a direct connection `PC <--(USB)--> host <--(SPI)--> SPU`
-    - this will allow for direct issuing of SPI commands from the PC
+    - this will allow for direct issuing of SPI commands from the PC to the SPU
     - it will also enable side-by-side comparison of the SPU and the golden model running inside the docker container
 - allow creation of a more compact programming file for the EVK's SPI flash
+- have a proper serialization format for the FQIR pickle
 
