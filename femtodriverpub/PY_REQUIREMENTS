@@ -1,4 +1,4 @@
 numpy>=1.18.0
 femtorun>=1.0.5.dev0, ==1.*
-femtocrux>=0.2.2
+femtocrux>=0.2.4.dev0
 redis>=4.0.0
