@@ -29,6 +29,8 @@ this will populate `apb_records`, which has the `0PROG_A` and `0PROG_D` files wh
 
 #### To generate SD programming files from a previously saved FQIR pickle
 
+This currently only works with the PyTorch flow. For now, for TF use `sd_from_femtocrux.py`.
+
 You can pickle the docker's input, the FQIR graph, with `torch.save()` (In the pytorch/TF femtocrux walkthroughs, this variable is called `fqir_graph`). Put these pickles in `femtodriverpub/models/`.
 
 `run_from_pt.py` works on these pickles, invoking the femtocrux docker to compile them and produce a zip containing memory images. It then does the same thing that `sd_from_femtocrux.py` does, producing SD card programming files. 
@@ -43,7 +45,7 @@ run_from_pt.py ../models/fqir_identity.py --norun
 
 Notice the `images.zip` that appears and was unpacked to `docker_data/`. `apb_records` contains the output as before.
 
-Pickles are notoriously unportable. Make sure the pickle is generated using the tool versions as on the machine it is unpacked.
+Pickles are notoriously unportable. Ideally, any pickling/unpickling is done on one machine, but failing that, try to ensure the pickle is unpacked using the same tool versions it was generated with.
 
 ## Future
 
