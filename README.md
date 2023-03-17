@@ -11,7 +11,7 @@ pip install -e .
 ```
 
 If you just want to run `sd_from_femtocrux.py`, and not `run_from_pt.py` (which requires femtocrux),
-you may remove or comment out the femtocrux requirement in `femtodriverpub/PY_REQUIREMENTS.txt`
+you may remove or comment out the femtocrux requirement in `femtodriverpub/PY_REQUIREMENTS.txt`. This will avoid having to install femtocrux's dependencies including torch.
 
 ## Usage:
 
@@ -41,9 +41,9 @@ Example:
 run_from_pt.py ../models/fqir_identity.py --norun
 ```
 
-Notice the `images.zip` that appears and was unpacked to `docker_data/`
+Notice the `images.zip` that appears and was unpacked to `docker_data/`. `apb_records` contains the output as before.
 
-# Future
+## Future
 
 Updates are planned that will:
 - allow a direct connection `PC <--(USB)--> host <--(SPI)--> SPU`
