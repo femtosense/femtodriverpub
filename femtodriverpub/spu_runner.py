@@ -542,6 +542,7 @@ class SPURunner(FemtoRunner):
     def _commit_APB_to_files(self):
         """Dumps captured APB records to files"""
         basedir = 'apb_records'
+        os.makedirs(basedir, exist_ok=True)
         for record, datas in self.io.apb_transaction_records.items():
             save_hexfile(basedir + '/' + record + '_A', datas['addr'], bits=32)
             save_hexfile(basedir + '/' + record + '_D', datas['data'], bits=32)
