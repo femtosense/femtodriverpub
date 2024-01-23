@@ -341,7 +341,7 @@ class ZynqPlugin:
         return obj
     
     def _pretty_addr(self, addr):
-        return f"[{as_32b_hex(addr)} = {addr} ({self.io.hw_addr_to_obj_str(addr)})]"
+        return f"[{as_32b_hex(addr)} = {addr} ({self._hw_addr_to_obj_str(addr)})]"
 
     # FIXME addressing-unpacking stuff should possibly be moved
 

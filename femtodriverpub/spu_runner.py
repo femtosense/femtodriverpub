@@ -107,7 +107,7 @@ class SPURunner(FemtoRunner):
             raise NotImplementedError("redis runner not yet supported pending future release")
 
         if platform in platform_to_plugin:
-            self.io = platform_to_plugin[platform](fake_connection=fake_connection, fake_hw_recv_vals=fake_hw_recv_vals)
+            self.ioplug = platform_to_plugin[platform](fake_connection=fake_connection, fake_hw_recv_vals=fake_hw_recv_vals)
         else: 
             raise NotImplementedError(f"unrecognized hardware platform {platform}, must be one of {platform_to_plugin.keys()}")
 
@@ -236,7 +236,7 @@ class SPURunner(FemtoRunner):
         if data_width == 64: # break up longer words
             addr_range, vals = SPURunner.pack_64_to_32(*addr_range, vals)
 
-        self.io.hw_send(msgtype, *addr_range, vals, flush)
+        self.ioplug.hw_send(msgtype, *addr_range, vals, flush)
 
     def hw_recv(self,
             target    : HWTARGET,
@@ -256,7 +256,7 @@ class SPURunner(FemtoRunner):
         if data_width == 64: # break up longer words
             start_addr, end_addr, length = addr_range
             addr_range = start_addr, end_addr, length * 2
-        vals = self.io.hw_recv(msgtype, *addr_range) # 32b words
+        vals = self.ioplug.hw_recv(msgtype, *addr_range) # 32b words
         if data_width == 64:
             vals = [SPURunner.unpack_32_to_64(v) for v in vals]
         assert(isinstance(vals, list))
@@ -426,10 +426,10 @@ class SPURunner(FemtoRunner):
             raise NotImplementedError()
             # I think this is just if you want to reset certain variables?
 
-        self.io.start_apb_recording('0PROG')
+        self.ioplug.start_apb_recording('0PROG')
 
         # maybe do some platform-specific reset stuff before programming
-        self.io.reset()
+        self.ioplug.reset()
 
         self.change_mem_power_state('on')
 
@@ -449,7 +449,7 @@ class SPURunner(FemtoRunner):
             for mem, hex_fname in hex_fnames.items():
                 self._hw_write_from_hexfile((cidx, mem, 0), hex_fname)
 
-        self.io.stop_apb_recording()
+        self.ioplug.stop_apb_recording()
         self._commit_APB_to_files()
 
     def finish(self):
@@ -543,7 +543,7 @@ class SPURunner(FemtoRunner):
         """Dumps captured APB records to files"""
         basedir = 'apb_records'
         os.makedirs(basedir, exist_ok=True)
-        for record, datas in self.io.apb_transaction_records.items():
+        for record, datas in self.ioplug.apb_transaction_records.items():
             save_hexfile(basedir + '/' + record + '_A', datas['addr'], bits=32)
             save_hexfile(basedir + '/' + record + '_D', datas['data'], bits=32)
 
