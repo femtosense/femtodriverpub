@@ -14,6 +14,13 @@ If you just want to run `sd_from_femtocrux.py`, and not `run_from_pt.py` (which 
 you may remove or comment out the femtocrux requirement in `femtodriverpub/PY_REQUIREMENTS.txt`. This will avoid having to install femtocrux's dependencies including torch.
 
 See other Femtosense documentation for instructions how to install femtocrux.
+You will be prompted to download the FX docker image the first time you run.
+Remember to start docker daemon and add yourself to the "docker" group. E.g.:
+
+```
+sudo systemctl start docker
+sudo usermod -aG docker <username>
+```
 
 ## Usage:
 
