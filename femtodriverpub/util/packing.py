@@ -1,5 +1,5 @@
 import math
-from femtodriver.typing_help import ARRAYU64, ARRAYU32, ARRAYINT
+from femtodriverpub.typing_help import ARRAYU64, ARRAYU32, ARRAYINT
 from typing import Tuple, Literal
 import numpy as np
 

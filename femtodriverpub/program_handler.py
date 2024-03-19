@@ -1,6 +1,6 @@
 import shutil
-from femtodriver.typing_help import VARVALS, ARRAYU64, ARRAYINT, IOTARGET, HWTARGET
-import femtodriver.util.packing as packing
+from femtodriverpub.typing_help import VARVALS, ARRAYU64, ARRAYINT, IOTARGET, HWTARGET
+import femtodriverpub.util.packing as packing
 import zipfile
 import yaml
 import os
@@ -182,7 +182,7 @@ class ProgramHandler:
         # debug stores, calls the debugger
         if self.insert_debug_stores:
             try:
-                from femtodriver.debugger import SPUDebugger
+                from femtodriverpub.debugger import SPUDebugger
             except ImportError:
                 raise ImportError(
                     "couldn't import debugger. This is a Femtosense-internal developer feature"

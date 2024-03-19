@@ -5,12 +5,12 @@ import numpy as np
 import torch
 import pickle
 
-import femtodriver
+import femtodriverpub
 from femtorun import FemtoRunner, DummyRunner
-from femtodriver import SPURunner, FakeSPURunner
-from femtodriver.fx_runner import FXRunner
+from femtodriverpub import SPURunner, FakeSPURunner
+from femtodriverpub.fx_runner import FXRunner
 
-from femtodriver.program_handler import ProgramHandler
+from femtodriverpub.program_handler import ProgramHandler
 
 import zipfile
 
@@ -31,11 +31,11 @@ from argparse import (
 
 import yaml
 
-from femtodriver.run.util import process_single_outputs
+from femtodriverpub.run.util import process_single_outputs
 from pathlib import Path
 
 
-TOP_LEVEL_PACKAGE_DIR = Path(femtodriver.__file__).parent
+TOP_LEVEL_PACKAGE_DIR = Path(femtodriverpub.__file__).parent
 MODELDIR = TOP_LEVEL_PACKAGE_DIR / Path("models")
 MODELDIR = str(MODELDIR)
 
@@ -52,7 +52,7 @@ def model_helpstr(modeldir=MODELDIR):
     with open(yamlfname, "r") as file:
         model_desc = yaml.safe_load(file)
 
-    s = "\navailable models in femtodriver/femtodriver/models:\n"
+    s = "\navailable models in femtodriverpub/femtodriverpub/models:\n"
     thisdir, subdirs, files = next(iter(os.walk(modeldir)))
     for file in files:
         if file.endswith(".pt"):
@@ -168,7 +168,7 @@ def main(argv, modeldir=MODELDIR):
     parser.add_argument(
         "--model_options_file",
         default=None,
-        help=".yaml with run options for different models (e.g. compiler options). Default is femtodriver/femtodriver/models/options.yaml",
+        help=".yaml with run options for different models (e.g. compiler options). Default is femtodriverpub/femtodriverpub/models/options.yaml",
     )
     parser.add_argument(
         "--output_dir",

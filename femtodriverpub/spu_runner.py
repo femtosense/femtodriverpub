@@ -1,18 +1,18 @@
 try:
     from hardware_config import cfg
 except ImportError:
-    from femtodriver import cfg  # fall back to 1.2 config (eval systems)
+    from femtodriverpub import cfg  # fall back to 1.2 config (eval systems)
 
 from femtorun import FemtoRunner
 
-import femtodriver.util.packing as packing
-from femtodriver.util.hexfile import *
+import femtodriverpub.util.packing as packing
+from femtodriverpub.util.hexfile import *
 
-from femtodriver.typing_help import VARVALS, ARRAYU64, ARRAYINT, IOTARGET, HWTARGET
+from femtodriverpub.typing_help import VARVALS, ARRAYU64, ARRAYINT, IOTARGET, HWTARGET
 from typing import *
 
-from femtodriver.plugins.zynq_plugin import ZynqPlugin
-from femtodriver.plugins.redis_plugin import RedisPlugin
+from femtodriverpub.plugins.zynq_plugin import ZynqPlugin
+from femtodriverpub.plugins.redis_plugin import RedisPlugin
 
 
 import numpy as np
@@ -23,7 +23,7 @@ import yaml
 
 import logging
 
-from femtodriver.program_handler import MEM_IMAGE_FNAME_PRE
+from femtodriverpub.program_handler import MEM_IMAGE_FNAME_PRE
 
 # this is nothing fancy
 # a Mock just allows any method to be called on it, doing nothing
@@ -47,14 +47,14 @@ class NullDebugger(Mock):
 
 # import correct address map for this version
 if cfg.ISA == 1.1:
-    import femtodriver.addr_map_spu1p1 as am
+    import femtodriverpub.addr_map_spu1p1 as am
 elif cfg.ISA == 1.2:
-    import femtodriver.addr_map_spu1p2 as am
+    import femtodriverpub.addr_map_spu1p2 as am
 elif cfg.ISA == 1.3:
-    import femtodriver.addr_map_spu1p3 as am
+    import femtodriverpub.addr_map_spu1p3 as am
 elif cfg.ISA == 2.0:
     raise NotImplementedError(
-        "ISA 2.0 femtodriver not supported. Perhaps you meant to set environment var FS_HW_CFG to something else"
+        "ISA 2.0 femtodriverpub not supported. Perhaps you meant to set environment var FS_HW_CFG to something else"
     )
 else:
     raise NotImplementedError(f"unrecognized ISA version {cfg.ISA}")
@@ -184,7 +184,7 @@ class SPURunner(FemtoRunner):
 
     def attach_debugger(self, fasmir):
         try:
-            from femtodriver.debugger import SPUDebugger
+            from femtodriverpub.debugger import SPUDebugger
 
             self.dbg = SPUDebugger(self, fasmir)
 

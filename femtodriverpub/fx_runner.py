@@ -57,13 +57,13 @@ class FXRunner(FemtoRunner):
     def run(self, input_val_timeseries):
         if len(input_val_timeseries) > 1:
             raise RuntimeError(
-                "femtodriver's FXRunner can only handle models with single inputs"
+                "femtodriverpub's FXRunner can only handle models with single inputs"
             )
 
         fqir_outputs = self.fqir.subgraphs["ARITH"].outputs
         if len(fqir_outputs) > 1:
             raise RuntimeError(
-                "femtodriver's FXRunner can only handle models with single outputs"
+                "femtodriverpub's FXRunner can only handle models with single outputs"
             )
 
         first_input_seq = next(iter(input_val_timeseries.values()))

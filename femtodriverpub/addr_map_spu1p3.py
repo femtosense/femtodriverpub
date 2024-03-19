@@ -1,7 +1,7 @@
 try:
     from hardware_config import cfg
 except ImportError:
-    from femtodriver import cfg
+    from femtodriverpub import cfg
 
 APB_ADDR = 0x0  # base of APB addr range
 

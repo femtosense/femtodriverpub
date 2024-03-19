@@ -2,7 +2,7 @@ import os
 import numpy as np
 
 from femtorun import FemtoRunner
-from femtodriverpub import SPURunner, FakeSPURunner
+from femtodriverpubpub import SPURunner, FakeSPURunner
 
 import logging
 

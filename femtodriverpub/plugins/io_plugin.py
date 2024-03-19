@@ -20,10 +20,10 @@ import matplotlib.pyplot as plt
 try:
     from hardware_config import cfg
 except ImportError:
-    from femtodriver import cfg  # fall back to 1.2 config (eval systems)
+    from femtodriverpub import cfg  # fall back to 1.2 config (eval systems)
 
-from femtodriver.util.hexfile import *
-from femtodriver.typing_help import *
+from femtodriverpub.util.hexfile import *
+from femtodriverpub.typing_help import *
 from typing import *
 
 import redis

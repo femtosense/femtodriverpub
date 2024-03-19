@@ -35,9 +35,9 @@ for file in ${MANIFEST[@]} ; do
     cp $FD_PATH/$file $FDP_PATH/$file
 done
 
-#########################################
-## mangle imports
-#FILES=`find . -name "*py"`
-#for fname in $FILES ; do 
-#    sed -i "s|femtodriver|femtodriverpub|g" $fname
-#done
+########################################
+# mangle imports
+FILES=`find . -name "*py"`
+for fname in $FILES ; do 
+    sed -i "s|femtodriver|femtodriverpub|g" $fname
+done

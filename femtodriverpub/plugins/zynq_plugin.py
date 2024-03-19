@@ -16,28 +16,28 @@ import os
 import matplotlib.pyplot as plt
 
 import socket  # for real cable run
-import femtodriver.util.fake_socket as fake_socket  # for board-less debug
+import femtodriverpub.util.fake_socket as fake_socket  # for board-less debug
 
 try:
     from hardware_config import cfg
 except ImportError:
-    from femtodriver import cfg  # fall back to 1.2 config (eval systems)
+    from femtodriverpub import cfg  # fall back to 1.2 config (eval systems)
 
-from femtodriver.plugins.io_plugin import *
+from femtodriverpub.plugins.io_plugin import *
 
-from femtodriver.typing_help import *
+from femtodriverpub.typing_help import *
 from typing import *
 
 # import correct address map for this version
 if cfg.ISA == 1.1:
-    import femtodriver.addr_map_spu1p1 as am
+    import femtodriverpub.addr_map_spu1p1 as am
 elif cfg.ISA == 1.2:
-    import femtodriver.addr_map_spu1p2 as am
+    import femtodriverpub.addr_map_spu1p2 as am
 elif cfg.ISA == 1.3:
-    import femtodriver.addr_map_spu1p3 as am
+    import femtodriverpub.addr_map_spu1p3 as am
 elif cfg.ISA == 2.0:
     raise NotImplementedError(
-        "ISA 2.0 femtodriver not supported. Perhaps you meant to set environment var FS_HW_CFG to something else"
+        "ISA 2.0 femtodriverpub not supported. Perhaps you meant to set environment var FS_HW_CFG to something else"
     )
 else:
     raise NotImplementedError(f"unrecognized ISA version {cfg.ISA}")
