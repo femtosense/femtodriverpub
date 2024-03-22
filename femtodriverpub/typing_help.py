@@ -1,5 +1,5 @@
 # typing convenience
-from typing import *
+from typing import Dict, Tuple, Union, Literal
 import numpy as np
 import numpy.typing as npt
 
@@ -26,5 +26,4 @@ SPI_REGS      -> spu_top
 HOST          -> host
 anything else -> apb
 """
-IOTARGET = Union['apb', 'axis', 'host', 'spu_top']
-
+IOTARGET = Literal["apb", "axis", "host", "spu_top"]

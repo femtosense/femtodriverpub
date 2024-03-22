@@ -22,6 +22,8 @@ SPI_REGS = [
     "PLL_CLKF",  # frequency multiplier
     "PLL_CLKR",  # pre-VCO divider
     "PLL_LOCK",  # pll lock check (read only)
+    "SPI_STATUS_UNUSED",  # SPI status reg, doesn't do anything useful
+    "OUTPUT_INT",  # internal version of spi_int
 ]
 SPI_REG_TO_IDXS = {reg: i for i, reg in enumerate(SPI_REGS)}
 
@@ -46,6 +48,11 @@ SYS_REGS = [
     "TM_TIMERS",
     "IM_TIMERS",
     "REG_DP_ACK_DELAY",  # how many fudge cycles to pad on the end of the datapaths' ack
+    "SPI_ENCRYPTION_KEY_IDX",  # select from preset keys
+    "SPI_ENCRYPTION_SALT_3",  # user can modify key
+    "SPI_ENCRYPTION_SALT_2",
+    "SPI_ENCRYPTION_SALT_1",
+    "SPI_ENCRYPTION_SALT_0",
 ]
 
 # useful mem power state values:
