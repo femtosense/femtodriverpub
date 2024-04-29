@@ -205,7 +205,7 @@ def main(argv, modeldir=MODELDIR):
     )
     parser.add_argument(
         "--runner",
-        default="zynq",
+        default="fakezynq",
         help="primary runner to use: (options: zynq, fakezynq, redis)",
     )
     parser.add_argument(
